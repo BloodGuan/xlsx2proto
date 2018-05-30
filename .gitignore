@@ -1,0 +1,11 @@
+Backup/
+Tmp/
+
+*.suo
+*.mdb
+*.ldb
+*.sln
+
+Tools/cs/App.config
+Tools/cs/bin
+Tools/cs/obj
