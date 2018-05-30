@@ -6,6 +6,5 @@ Tmp/
 *.ldb
 *.sln
 
-Tools/cs/App.config
 Tools/cs/bin
 Tools/cs/obj
