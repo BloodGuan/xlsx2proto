@@ -34,7 +34,7 @@ namespace xlsx2proto
         public static string TypeErrorMessage = "意外的字段类型：{0}";
         public static string ValueErrorMessage = "错误的字段值：{0}";
         public static string RequireTypeErrorMessage = "错误的表头：{0}  ,在”{1}“的第 {2} 列";
-        public static string FieldNameErrorMessage = "错误的字段名：{0}  ,在”{1}“的第 {2} 列\n\t字段名必须由英文字母(a-z/A-Z)，数字(0-9)，下划线(_)组成，且不能以数字开头。";
+        public static string FieldNameErrorMessage = "错误的字段名：{0}  ,在”{1}“的第 {2} 列";
 
         public static void RequireType(string msg, string sheetName, int col)
         {

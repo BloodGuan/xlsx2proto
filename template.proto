@@ -1,0 +1,14 @@
+syntax = "proto2"
+
+package TableProto
+
+message GoodsInfo
+{
+	
+}
+
+message GoodsTable
+{
+	optional string key = 1;
+	repeated GoodsInfo list;
+}

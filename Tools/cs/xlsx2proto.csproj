@@ -49,10 +49,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\ExcelHelper.cs" />
     <Compile Include="src\Log.cs" />
-    <Compile Include="src\TypeString.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <Compile Include="src\ProtoHelper.cs" />
+    <Compile Include="src\DataParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\Aspose.Cells.dll" />
