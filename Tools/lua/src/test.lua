@@ -1,8 +1,8 @@
-package.path = package.path..";.\\src\\?.lua"
+package.path = ".\\src\\?.lua;"..package.path
 
 require "protobuf"
 
-addr = io.open("D:/xlsx2proto/addressbook.pb", "rb")
+addr = io.open("../../../Tmp/lua/proto/TableProto_GoodsTable.pb", "rb")
 buffer = addr:read "*a"
 addr:close()
 
@@ -24,25 +24,25 @@ for _,v in ipairs(message) do
 	end
 end
 
-addressbook = {
-	name = "Alice",
-	id = 12345,
-	phone = {
-		{ number = "1301234567" },
-		{ number = "87654321", type = "WORK" },
-	}
-}
+-- addressbook = {
+-- 	name = "Alice",
+-- 	id = 12345,
+-- 	phone = {
+-- 		{ number = "1301234567" },
+-- 		{ number = "87654321", type = "WORK" },
+-- 	}
+-- }
 
-code = protobuf.encode("tutorial.Person", addressbook)
+-- code = protobuf.encode("tutorial.Person", addressbook)
 
-decode = protobuf.decode("tutorial.Person" , code)
+-- decode = protobuf.decode("tutorial.Person" , code)
 
-print(decode.name)
-print(decode.id)
-for _,v in ipairs(decode.phone) do
-	print("\t"..v.number, v.type)
-end
+-- print(decode.name)
+-- print(decode.id)
+-- for _,v in ipairs(decode.phone) do
+-- 	print("\t"..v.number, v.type)
+-- end
 
-phonebuf = protobuf.pack("tutorial.Person.PhoneNumber number","87654321")
-buffer = protobuf.pack("tutorial.Person name id phone", "Alice", 123, { phonebuf })
-print(protobuf.unpack("tutorial.Person name id phone", buffer))
+-- phonebuf = protobuf.pack("tutorial.Person.PhoneNumber number","87654321")
+-- buffer = protobuf.pack("tutorial.Person name id phone", "Alice", 123, { phonebuf })
+-- print(protobuf.unpack("tutorial.Person name id phone", buffer))

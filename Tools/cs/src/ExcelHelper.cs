@@ -52,7 +52,7 @@ namespace xlsx2proto
         {
             {FieldRequireType.Required ,"required" },
             {FieldRequireType.Optional ,"optional" },
-            {FieldRequireType.Repeated ,"Repeated" },
+            {FieldRequireType.Repeated ,"repeated" },
         };
 
 
