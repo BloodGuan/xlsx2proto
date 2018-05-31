@@ -2,27 +2,55 @@ package.path = ".\\src\\?.lua;"..package.path
 
 require "protobuf"
 
-addr = io.open("../../../Tmp/lua/proto/TableProto_GoodsTable.pb", "rb")
-buffer = addr:read "*a"
-addr:close()
+function register( path )
+	local protofile = io.open(path, "rb")
+	local buffer = protofile:read "*a"
+	protofile:close()
 
-protobuf.register(buffer)
+	protobuf.register(buffer)
 
-t = protobuf.decode("google.protobuf.FileDescriptorSet", buffer)
+	local t = protobuf.decode("google.protobuf.FileDescriptorSet", buffer)
 
-proto = t.file[1]
+	local proto = t.file[1]
 
-print(proto.name)
-print(proto.package)
+	print(proto.name)
+	print(proto.package)
 
-message = proto.message_type
+	local message = proto.message_type
 
-for _,v in ipairs(message) do
-	print(v.name)
-	for _,v in ipairs(v.field) do
-		print("\t".. v.name .. " ["..v.number.."] " .. v.label)
+	for _,v in ipairs(message) do
+		print(v.name)
+		for _,v in ipairs(v.field) do
+			print("\t".. v.name .. " ["..v.number.."] " .. v.label)
+		end
 	end
 end
+
+register( "../../../Test/lua/proto/GPCommon.pbc" )
+register( "../../../Test/lua/proto/GPTSample.pbc" )
+
+local transform = {
+	position = {
+		x = 1,
+		y = 2,
+		z = 3
+	},
+	name = "哈哈哈"
+}
+
+local code = protobuf.encode("GP.Table.Transform", transform);
+
+local datafile = io.open("../../../Test/lua/proto/GPTSample.data", "wb")
+datafile:write(code)
+datafile:close()
+
+datafile = io.open("../../../Test/lua/proto/GPTSample.data", "rb")
+local databuffer = datafile:read "*a"
+datafile:close()
+
+local decode = protobuf.decode("GP.Table.Transform" , databuffer)
+print(decode.name)
+print(string.format("%s,%s,%s",decode.position.x,decode.position.y,decode.position.z))
 
 -- addressbook = {
 -- 	name = "Alice",
